@@ -60,8 +60,11 @@ public class Menu {
     private void addCourse() {
         String name = getName();
         String duration = getDuration();
-        if (!duration.isEmpty())
+        if (!duration.isEmpty()){
             hiberConnector.actions("4", 0, name, duration);
+            System.out.println("Курс добавлен");
+        }
+
     }
 
     private String getName() {
@@ -80,7 +83,6 @@ public class Menu {
 
     private void updateCourse() {
         int searchResult = Integer.parseInt(findCourse());
-        if (searchResult == 0) return;
         System.out.println("Введите какую информацию нужно изменить: ");
         System.out.println("1 - Название");
         System.out.println("2 - Длительность курса");
@@ -92,11 +94,13 @@ public class Menu {
             hiberConnector.actions("5", searchResult, "", getDuration());
         } else if (choice.equals("3")) {
             hiberConnector.actions("5", searchResult, getName(), getDuration());
-        } else System.out.println("Неверный выбор");
+        } else {System.out.println("Неверный выбор");return;}
+        System.out.println("Курс мзменен");
     }
 
     private void deleteCourse() {
         actById("6");
+        System.out.println("Курс удален");
     }
 
     private String actById(String choice) {

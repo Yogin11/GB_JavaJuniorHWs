@@ -11,7 +11,7 @@ import java.util.List;
 
 public class HiberConnector {
 
-    SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
 
     public HiberConnector() {
@@ -20,7 +20,7 @@ public class HiberConnector {
                 .buildSessionFactory();
     }
 
-    public Session getSession() {
+    private Session getSession() {
         return sessionFactory.openSession();
     }
 
@@ -57,30 +57,30 @@ public class HiberConnector {
 
     }
 
-    public void createCourses(Session session) {
+    private void createCourses(Session session) {
         for (int i = 0; i < 11; i++) {
             session.persist(RepositoryCourses.coursesCreator());
         }
         System.out.println("Добавлены новые курсы");
     }
 
-    public void showAllFromBase(Session session) {
+    private void showAllFromBase(Session session) {
         List<Course> courses = session.createQuery("FROM Course ", Course.class).getResultList();
         courses.forEach(System.out::println);
     }
 
-    public void findCourse(Session session, int id) {
+    private void findCourse(Session session, int id) {
         Course loadCourse = session.get(Course.class, id);
         System.out.println(loadCourse);
     }
 
-    public void addNewCourse(Session session, String... data) {
+    private void addNewCourse(Session session, String... data) {
         Course course = new Course(data[0], data[1]);
         session.persist(course);
-        System.out.println("Курс добавлен");
+
     }
 
-    public void updateCourse(Session session, int id, String... data) {
+    private void updateCourse(Session session, int id, String... data) {
         Course course = session.get(Course.class, id);
         if (data[0].isEmpty() && data[1].isEmpty())
             return;
@@ -91,13 +91,13 @@ public class HiberConnector {
             course.setDuration(data[1]);
         }
         session.merge(course);
-        System.out.println("Курс мзменен");
+
     }
 
-    public void deleteCourse(Session session, int id) {
+    private void deleteCourse(Session session, int id) {
         Course course = session.get(Course.class, id);
         session.remove(course);
-        System.out.println("Курс удален");
+
     }
 
 }
