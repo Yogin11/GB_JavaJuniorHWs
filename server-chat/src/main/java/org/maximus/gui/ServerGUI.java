@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.util.Set;
 
 public class ServerGUI extends JFrame implements ServerExchangable {
 
@@ -29,11 +28,8 @@ public class ServerGUI extends JFrame implements ServerExchangable {
     JButton btnStop;
     JTextArea textAreaChat;
     Thread threadServer;
-//    AccessRepository repository;
-
 
     public ServerGUI() throws HeadlessException {
-//        this.repository = repository;
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(WINDOW_POSX, WINDOW_POSY);
@@ -50,12 +46,9 @@ public class ServerGUI extends JFrame implements ServerExchangable {
         textAreaChat = new JTextArea(CHAT_AREA);
         JScrollPane scroll = new JScrollPane (textAreaChat, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-
         textAreaChat.setLineWrap(true);
         textAreaChat.setEditable(false);
-//        JScrollPane y = new JScrollPane( textAreaChat,
-//                VERTICAL_SCROLLBAR_ALWAYS ,
-//                HORIZONTAL_SCROLLBAR_ALWAYS);
+
         return scroll;
     }
 
@@ -74,20 +67,17 @@ public class ServerGUI extends JFrame implements ServerExchangable {
         btnStart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                server.setServerIsOn(true);
                 ServerSocket serverSocket = null;
                 try {
                     serverSocket = new ServerSocket(port);
                 } catch (IOException err) {
                     System.out.println("Не удалось запустить сервер");
                     return;
-//                    throw new RuntimeException(err);
                 }
-                server = new Server(serverSocket,port,ServerGUI.this);
+                server = new Server(serverSocket,ServerGUI.this);
                 threadServer = new Thread(server);
                 threadServer.start();
                 textAreaChat.setText(server.loadChat());
-//                server.runServer();
                 System.out.println("Server is started");
 
                 btnStart.setEnabled(false);
@@ -98,8 +88,7 @@ public class ServerGUI extends JFrame implements ServerExchangable {
             @Override
             public void actionPerformed(ActionEvent e) {
                 btnStart.setEnabled(true);
-                getAllThreads();
-
+//                getAllThreads();
                 System.out.println("Server is stopped");
                 server.stopServer();
                 btnStop.setEnabled(false);
@@ -108,13 +97,13 @@ public class ServerGUI extends JFrame implements ServerExchangable {
         });
     }
 
-    public void getAllThreads(){
-        Set<Thread> threads = Thread.getAllStackTraces().keySet();
-        System.out.printf("%-15s \t %-15s \t %-15s \t %s\n", "Name", "State", "Priority", "isDaemon");
-        for (Thread t : threads) {
-            System.out.printf("%-15s \t %-15s \t %-15d \t %s\n", t.getName(), t.getState(), t.getPriority(), t.isDaemon());
-        }
-    }
+//    public void getAllThreads(){
+//        Set<Thread> threads = Thread.getAllStackTraces().keySet();
+//        System.out.printf("%-15s \t %-15s \t %-15s \t %s\n", "Name", "State", "Priority", "isDaemon");
+//        for (Thread t : threads) {
+//            System.out.printf("%-15s \t %-15s \t %-15d \t %s\n", t.getName(), t.getState(), t.getPriority(), t.isDaemon());
+//        }
+//    }
 
     @Override
     public void addChatText(String message) {

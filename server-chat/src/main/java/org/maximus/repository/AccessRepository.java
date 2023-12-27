@@ -19,8 +19,6 @@ public class AccessRepository implements ServerAccessable, DataService {
             return access.get(nameString).equals(password);
         }
         return false;
-
-
     }
 
     @Override
@@ -49,8 +47,6 @@ public class AccessRepository implements ServerAccessable, DataService {
         }
         return stringBuilder.toString();
     }
-
-
 }
 
 

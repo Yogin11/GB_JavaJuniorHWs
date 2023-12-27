@@ -123,7 +123,6 @@ public class ClientGUI extends JFrame implements ClientExchangable {
         btnExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                client.closeAll();
                 client.disconnectFromServer();
                 changeFormOnBreakConnection();
             }
@@ -155,7 +154,6 @@ public class ClientGUI extends JFrame implements ClientExchangable {
     public void changeFormOnBreakConnection(){
         changeFieldsVisibility(false);
         textAreaChat.setEnabled(false);
-//        panelLogin.setVisible(true);
     }
 
     @Override

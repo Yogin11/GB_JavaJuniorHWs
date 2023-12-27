@@ -13,7 +13,6 @@ public class ClientManager implements Runnable {
 
     public static final ArrayList<ClientManager> clients = new ArrayList<>();
 
-
     private final Socket socket;
     private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
@@ -166,6 +165,5 @@ public class ClientManager implements Runnable {
     public int hashCode() {
         return Objects.hash(socket, server, name);
     }
-
 
 }

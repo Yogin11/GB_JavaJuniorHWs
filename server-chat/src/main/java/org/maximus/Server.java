@@ -15,15 +15,11 @@ public class Server implements Runnable{
     private ServerSocket serverSocket;
     private final DataService repository;
     private final ServerAccessable accessRepo;
-
-
     private final ServerGUI serverGUI;
-    private int port;
     private static String chatFile = "server-chat/src/main/resources/chat.txt";
 
-    public Server (ServerSocket serverSocket, int port, ServerGUI serverG){
+    public Server (ServerSocket serverSocket, ServerGUI serverG){
         this.serverSocket = serverSocket;
-        this.port = port;
         this.repository = new AccessRepository();
         this.accessRepo = new AccessRepository();
         this.serverGUI= serverG;
@@ -34,13 +30,6 @@ public class Server implements Runnable{
     @Override
     public void run() {
         while(!Thread.currentThread().isInterrupted()) {
-//            if (serverSocket.isClosed()) {
-//                try {
-//                    serverSocket = new ServerSocket(port);
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }
             runServer();
         }
     }
@@ -65,19 +54,10 @@ public class Server implements Runnable{
         ClientManager.clients
             .forEach(cl->{
                 cl.setLoggedOn(false);
-
                 cl.closeAll();
             });
         ClientManager.clients.clear();
-
-//        try {
-//            Thread.sleep(00);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
-
         closeSocket();
-
     }
 
 
