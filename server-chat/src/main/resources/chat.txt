@@ -1,0 +1,24 @@
+Ivan Ivanich: -----> joined the chat
+Ironman: -----> joined the chat
+Ivan Ivanich: -----> Left the chat
+Ivan Ivanich: -----> joined the chat
+Ironman: I want to run I want to hide
+Ivan Ivanich: I want to tear down the walls that hold me in silence
+Ironman: I wanna reach out and touch the flame
+Ivan Ivanich: Where the Streets have no name....
+Ironman: -----> Left the chat
+Ivan Ivanich: "U2"
+Ivan Ivanich: -----> Left the chat
+Server: Ivan подключился к чату.
+Server: Petr подключился к чату.
+Ivan: See the stone set in your eyes
+Ivan: See the thorn twist in your side
+Petr: I'll wait for you
+Petr: Sleight of hand and twist of fate
+Server: Danil подключился к чату.
+Danil: On a bed of nails she makes me wait
+Server: Ivan покинул чат
+Petr: Bye Danil!
+Danil: Bye Petr!
+Server: Petr покинул чат
+Server: Danil покинул чат
